@@ -149,11 +149,11 @@ public class RadioTest {
 
         Radio radio = new Radio();
 
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
 
         radio.decreaseVolume();
 
-        Assertions.assertEquals(9, radio.getCurrentVolume());
+        Assertions.assertEquals(99, radio.getCurrentVolume());
 
 
     }
@@ -210,8 +210,6 @@ public class RadioTest {
     public void shouldMaxNumberStations() {
         Radio radio = new Radio(10);
 
-        //radio.setNumberStations(10);
-
         Assertions.assertEquals(10, radio.getNumberStations());
     }
 
@@ -220,29 +218,33 @@ public class RadioTest {
     public void shouldOverMaxNumberStations() {
         Radio radio = new Radio(11);
 
-        //radio.setNumberStations(11);
-
         Assertions.assertEquals(0, radio.getNumberStations());
     }
 
     @Test
 
     public void shouldMinNumberStations() {
-        Radio radio = new Radio();
-
-        radio.setNumberStations(1);
+        Radio radio = new Radio(1);
 
         Assertions.assertEquals(1, radio.getNumberStations());
     }
 
     @Test
 
-    public void shouldUnderMaxNumberStations() {
-        Radio radio = new Radio();
-
-        radio.setNumberStations(0);
+    public void shouldUnderMinNumberStations() {
+        Radio radio = new Radio(0);
 
         Assertions.assertEquals(0, radio.getNumberStations());
+    }
+
+    @Test
+
+    public void shouldDefaultNumberStations() {
+        Radio radio = new Radio();
+
+        radio.getDefaultNumberStations();
+
+        Assertions.assertEquals(10, radio.getDefaultNumberStations());
     }
 
 

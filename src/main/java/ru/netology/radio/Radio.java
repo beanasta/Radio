@@ -94,9 +94,6 @@ public class Radio {
 
     }
 
-
-    private int defaultNumberStations = 10;
-
     private int numberStations;
 
     private int minNumberStations = 1;
@@ -104,36 +101,37 @@ public class Radio {
     private int maxNumberStations = 10;
 
 
+    private int defaultNumberStations = maxNumberStations;
+
+    public Radio() {
+        this.numberStations = defaultNumberStations;
+
+    }
+
+
     public Radio(int numberStations) {
+
+
+        if (numberStations < minNumberStations) {
+            return;
+        }
+        if (numberStations > maxNumberStations) {
+            return;
+        }
+
         this.numberStations = numberStations;
 
 
     }
 
+    public int getDefaultNumberStations() {
+
+        return defaultNumberStations;
+    }
+
     public int getNumberStations() {
 
         return numberStations;
-    }
-
-
-    public void setNumberStations(int newNumberStations) {
-
-        if (newNumberStations < minNumberStations) {
-            return;
-        }
-
-        if (newNumberStations > maxNumberStations) {
-            return;
-        }
-
-        numberStations = newNumberStations;
-
-
-    }
-
-    public Radio() {
-        this.defaultNumberStations = defaultNumberStations;
-
     }
 
 
